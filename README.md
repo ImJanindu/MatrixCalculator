@@ -20,14 +20,17 @@ A simple **terminal-based matrix calculator** (no GUI) that supports basic matri
 
 ## 📦 How to Run
 1. Clone this repository:
+
    ```
    git clone https://github.com/imjanindu/MatrixCalculator.git
    ```
 2. Move to main file folder:
+
    ```
    cd MatrixCalculator\src\matrix
    ```
 3. Compile and run:
+
    ```
    java Main.java
    ```
