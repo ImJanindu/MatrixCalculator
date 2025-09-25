@@ -1,18 +1,27 @@
-## Getting Started
+# Matrix Calculator (Terminal-Based)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A simple **terminal-based matrix calculator** (no GUI) that supports basic matrix operations for matrices of any dimension.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## ✨ Features
+- ➕ **Addition** of two matrices  
+- ➖ **Subtraction** of two matrices  
+- ✖️ **Multiplication** of two matrices  
+- 🔢 **Determinant** calculation  
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 🚀 To-Do (Future Features)
+- ➗ Add **matrix division**  
+- 🔄 Add **inverse matrix** calculation  
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+---
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 📦 How to Run
+1. Clone this repository:
+   ```git clone https://github.com/imjanindu/MatrixCalculator.git```
+2. Move to main file folder:
+   ```cd MatrixCalculator\src\matrix```
+3. Compile and run:
+   ```java Matrix.java```
