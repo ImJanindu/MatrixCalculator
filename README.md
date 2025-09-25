@@ -29,5 +29,5 @@ A simple **terminal-based matrix calculator** (no GUI) that supports basic matri
    ```
 3. Compile and run:
    ```
-   java Matrix.java
+   java Main.java
    ```
