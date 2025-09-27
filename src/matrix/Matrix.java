@@ -183,4 +183,12 @@ public class Matrix {
         m.values[row2] = temp;
     }
 
+    public boolean isSquare(){
+        if(this.rows == this.cols){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

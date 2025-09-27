@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         while(true){
-            System.out.print("\n===== Matrix Cal [Any Dimention] =====\n\n1. Define matrix\n2. Add\n3. Subtract\n4. Multiply\n5. Determinent\n6. Inverse\n7. Exit\n\nChoice: ");
+            System.out.print("\n===== Matrix Cal [Any Dimention] =====\n\n1. Define matrix\n2. Add\n3. Subtract\n4. Multiply\n5. Divide\n6. Determinent\n7. Inverse\n8. Exit\n\nChoice: ");
             int choice = sc1.nextInt();
             
             switch (choice) {
@@ -41,7 +41,21 @@ public class Main {
                         }
                     }
                     break;
+                
                 case 5:
+                    if (checkMatrix()) {
+                        if(matrix_1.cols == matrix_2.rows && matrix_2.isSquare()){
+                            Matrix result_matrix = matrix_1.multiplication(matrix_2.inverse());
+                            if (result_matrix != null) {
+                                result_matrix.display();
+                            }
+                        }else{
+                            System.out.println("\nThis matrix operation is not compatible");
+                        }
+                    }
+                    break;
+
+                case 6:
                     if (checkMatrix()) {
                         if (isSquare()) {
                             System.out.print("\nEnter the matrix number (1 or 2): ");
@@ -58,7 +72,7 @@ public class Main {
                         }
                     }
                     break;
-                case 6:
+                case 7:
                     if(checkMatrix()){
                         if (isSquare()) {
                             Matrix result;
@@ -77,7 +91,7 @@ public class Main {
                     }
                     break;
                 
-                case 7:
+                case 8:
                     System.out.println("\nProgram End!!");
                     return;
                 default:

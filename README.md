@@ -14,7 +14,7 @@ A simple **terminal-based matrix calculator** (no GUI) that supports basic matri
 
 ## 🚀 To-Do (Future Features)
 - ~~➗ Add **matrix division**~~ ✅
-- 🔄 Add **inverse matrix** calculation  
+- ~~🔄 Add **inverse matrix**~~ ✅  
 
 ---
 
