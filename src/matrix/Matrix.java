@@ -22,13 +22,14 @@ public class Matrix {
         System.out.println();
         
         for (int i = 0; i < rows; i++) {
-            System.out.print("|\t");
+            System.out.print("|    ");
             for (int j = 0; j < cols; j++) {
-                System.out.printf("%.2f", values[i][j] + "\t");
+                System.out.printf("%.2f\t", values[i][j]);
             }
             System.out.println("|");
         }
     }
+    
 
     public Matrix add(Matrix m) {
         if(this.rows != m.rows || this.cols != m.cols) {
@@ -95,7 +96,6 @@ public class Matrix {
         for(int i=0;i<result.rows-1;i++){
             float pivot = result.getValue(i, i);
 
-                
             for(int j=i+1;j<this.rows;j++){
                 float[] currentRow = new float[this.cols];
                 System.arraycopy(result.values[i], 0, currentRow, 0, result.values[i].length);
@@ -111,17 +111,76 @@ public class Matrix {
 
                     result.setValue(j, x, nextRow[x]);
                 }   
-
             }
         }
 
-        // Multiply diagonal values in the triangular matrix to calculate determinent
+        // Multiply diagonal values in the triangular matrix to calculate determinant
         float det = 1;
         for(int i=0;i<this.rows;i++){
             det *= result.getValue(i, i);
         }
 
         return det;
+    }
+
+    public Matrix inverse() {
+        int n = rows;
+        Matrix a = new Matrix(n, n);
+        // Copy original matrix
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                a.setValue(i, j, this.getValue(i, j));
+
+        Matrix inv = identityMatrix(n);
+
+        for (int i = 0; i < n; i++) {
+            float pivot = a.getValue(i, i);
+            if (Math.abs(pivot) < 1e-6) {
+                // Find a row to swap
+                boolean swapped = false;
+                for (int k = i + 1; k < n; k++) {
+                    if (Math.abs(a.getValue(k, i)) > 1e-6) {
+                        swapRows(a, i, k);
+                        swapRows(inv, i, k);
+                        pivot = a.getValue(i, i);
+                        swapped = true;
+                        break;
+                    }
+                }
+                if (!swapped) {
+                    System.out.println("Matrix is singular and cannot be inverted.");
+                    return null;
+                }
+            }
+            // Normalize pivot row
+            for (int j = 0; j < n; j++) {
+                a.setValue(i, j, a.getValue(i, j) / pivot);
+                inv.setValue(i, j, inv.getValue(i, j) / pivot);
+            }
+            // Eliminate other rows
+            for (int k = 0; k < n; k++) {
+                if (k == i) continue;
+                float factor = a.getValue(k, i);
+                for (int j = 0; j < n; j++) {
+                    a.setValue(k, j, a.getValue(k, j) - factor * a.getValue(i, j));
+                    inv.setValue(k, j, inv.getValue(k, j) - factor * inv.getValue(i, j));
+                }
+            }
+        }
+        return inv;
+    }
+
+    private static Matrix identityMatrix(int n) {
+        Matrix id = new Matrix(n, n);
+        for (int i = 0; i < n; i++)
+            id.setValue(i, i, 1.0f);
+        return id;
+    }
+
+    private static void swapRows(Matrix m, int row1, int row2) {
+        float[] temp = m.values[row1];
+        m.values[row1] = m.values[row2];
+        m.values[row2] = temp;
     }
 
 }

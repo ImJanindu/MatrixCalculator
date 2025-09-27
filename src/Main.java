@@ -10,11 +10,14 @@ public class Main {
 
     public static void main(String[] args) {
         while(true){
-            System.out.print("\n===== Matrix Cal [Any Dimention] =====\n\n1. Add\n2. Subtract\n3. Multiply\n4. Determinent\n5. Define matrix\n6. Exit\n\nChoice: ");
+            System.out.print("\n===== Matrix Cal [Any Dimention] =====\n\n1. Define matrix\n2. Add\n3. Subtract\n4. Multiply\n5. Determinent\n6. Inverse\n7. Exit\n\nChoice: ");
             int choice = sc1.nextInt();
             
             switch (choice) {
                 case 1:
+                    saveMatrix();
+                    break;
+                case 2:
                     if (checkMatrix()) {
                         Matrix result_matrix = matrix_1.add(matrix_2);
                         if (result_matrix != null) {
@@ -22,7 +25,7 @@ public class Main {
                         }
                     }
                     break;
-                case 2:
+                case 3:
                     if (checkMatrix()) {
                         Matrix result_matrix = matrix_1.subtract(matrix_2);
                         if (result_matrix != null) {
@@ -30,7 +33,7 @@ public class Main {
                         }
                     }
                     break;
-                case 3:
+                case 4:
                     if (checkMatrix()) {
                         Matrix result_matrix = matrix_1.multiplication(matrix_2);
                         if (result_matrix != null) {
@@ -38,7 +41,7 @@ public class Main {
                         }
                     }
                     break;
-                case 4:
+                case 5:
                     if (checkMatrix()) {
                         if (isSquare()) {
                             System.out.print("\nEnter the matrix number (1 or 2): ");
@@ -55,10 +58,26 @@ public class Main {
                         }
                     }
                     break;
-                case 5:
-                    saveMatrix();
-                    break;
                 case 6:
+                    if(checkMatrix()){
+                        if (isSquare()) {
+                            Matrix result;
+                            System.out.print("\nEnter the matrix number (1 or 2): ");
+                            int num = sc1.nextInt();
+                            if (num == 1) {
+                                result = matrix_1.inverse();
+                            } else {
+                                result = matrix_2.inverse();
+                            }
+                            
+                            result.display();
+                        } else {
+                            System.out.println("\nDeterminent can be calculated only for Square matrices");
+                        }
+                    }
+                    break;
+                
+                case 7:
                     System.out.println("\nProgram End!!");
                     return;
                 default:
