@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         while(true){
-            System.out.print("\n==== Matrix Cal [Any Dimention] ====\n\n1. Add\n2. Subtract\n3. Multiply\n4. Determinent\n5. Define matrix\n6. Exit\n\nChoice: ");
+            System.out.print("\n===== Matrix Cal [Any Dimention] =====\n\n1. Add\n2. Subtract\n3. Multiply\n4. Determinent\n5. Define matrix\n6. Exit\n\nChoice: ");
             int choice = sc1.nextInt();
             
             switch (choice) {
