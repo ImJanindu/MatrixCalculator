@@ -148,7 +148,7 @@ public class Matrix {
                     }
                 }
                 if (!swapped) {
-                    System.out.println("\nMatrix is singular and cannot be inverted.");
+                    System.out.println("Matrix is singular and cannot be inverted.");
                     return null;
                 }
             }
