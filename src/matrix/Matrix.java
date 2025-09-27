@@ -82,6 +82,13 @@ public class Matrix {
     }
 
     float calculateDet(){
+        Matrix result = new Matrix(this.rows, this.cols);
+        for(int i=0;i<this.rows;i++){
+            for(int j=0;j<this.cols;j++){
+                result.setValue(i, j, values[i][j]);
+            }
+        }
+        
         // Used Gaussian elimination method
 
         // Convert matrix to triangular matrix
@@ -99,7 +106,7 @@ public class Matrix {
                 float mul = values[j][i]/pivot;
 
                 for(int x=0;x<this.cols;x++){
-                    currentRow[x] = currentRow[x]* mul;
+                    currentRow[x] = currentRow[x] * mul;
                     nextRow[x] = nextRow[x] - currentRow[x];
 
                     this.setValue(j, x, nextRow[x]);
@@ -111,7 +118,13 @@ public class Matrix {
         // Multiply diagonal values in the triangular matrix to calculate determinent
         float det = 1;
         for(int i=0;i<this.rows;i++){
-            det *= values[i][i];
+            det *= this.getValue(i, i);
+        }
+
+        for(int i=0;i<this.rows;i++){
+            for(int j=0;j<this.cols;j++){
+                this.setValue(i, j, result.getValue(i, j));
+            }
         }
 
         return det;
