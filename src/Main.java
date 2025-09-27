@@ -1,5 +1,3 @@
-package matrix;
-
 import java.util.Scanner;
 import matrix.Matrix;
 
@@ -15,49 +13,56 @@ public class Main {
             System.out.print("\n==== Matrix Cal [Any Dimention] ====\n\n1. Add\n2. Subtract\n3. Multiply\n4. Determinent\n5. Define matrix\n6. Exit\n\nChoice: ");
             int choice = sc1.nextInt();
             
-            if(choice==1){
-                if(checkMatrix()){
-                    Matrix result_matrix = matrix_1.add(matrix_2);
-                    if(result_matrix!=null){
-                        result_matrix.display();
-                    }
-                }
-            }else if(choice==2){
-                if(checkMatrix()){
-                    Matrix result_matrix = matrix_1.subtract(matrix_2);
-                    if(result_matrix!=null){
-                        result_matrix.display();
-                    }
-                }
-            }else if(choice==3){
-                if(checkMatrix()){
-                    Matrix result_matrix = matrix_1.multiplication(matrix_2);
-                    if(result_matrix!=null){
-                        result_matrix.display();
-                    }
-                }
-            }else if(choice==4){
-                if(checkMatrix()){
-                    if(isSquare()){
-                        System.out.print("\nEnter the matrix number (1 or 2): ");
-                        int num = sc1.nextInt();
-                        float det;
-                        if(num==1){
-                            det = matrix_1.calculateDet();
-                        }else{
-                            det = matrix_2.calculateDet();
+            switch (choice) {
+                case 1:
+                    if (checkMatrix()) {
+                        Matrix result_matrix = matrix_1.add(matrix_2);
+                        if (result_matrix != null) {
+                            result_matrix.display();
                         }
-                        
-                        System.out.printf("\nDeterminent: %.2f\n", det);
-                    }else{
-                        System.out.println("\nDeterminent can be calculated only for Square matrices");
                     }
-                }
-            }else if(choice==5){
-                saveMatrix();
-            }else{
-                System.out.println("\nProgram End!!");
-                break;
+                    break;
+                case 2:
+                    if (checkMatrix()) {
+                        Matrix result_matrix = matrix_1.subtract(matrix_2);
+                        if (result_matrix != null) {
+                            result_matrix.display();
+                        }
+                    }
+                    break;
+                case 3:
+                    if (checkMatrix()) {
+                        Matrix result_matrix = matrix_1.multiplication(matrix_2);
+                        if (result_matrix != null) {
+                            result_matrix.display();
+                        }
+                    }
+                    break;
+                case 4:
+                    if (checkMatrix()) {
+                        if (isSquare()) {
+                            System.out.print("\nEnter the matrix number (1 or 2): ");
+                            int num = sc1.nextInt();
+                            float det;
+                            if (num == 1) {
+                                det = matrix_1.calculateDet();
+                            } else {
+                                det = matrix_2.calculateDet();
+                            }
+                            System.out.printf("\nDeterminent: %.2f\n", det);
+                        } else {
+                            System.out.println("\nDeterminent can be calculated only for Square matrices");
+                        }
+                    }
+                    break;
+                case 5:
+                    saveMatrix();
+                    break;
+                case 6:
+                    System.out.println("\nProgram End!!");
+                    return;
+                default:
+                    System.out.println("\nInvalid choice. Please try again.");
             }
         }
         

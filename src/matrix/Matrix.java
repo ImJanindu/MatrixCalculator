@@ -1,10 +1,10 @@
 package matrix;
 
 public class Matrix {
-    int rows, cols;
+    public int rows, cols;
     float values[][];
 
-    Matrix(int r, int c) {
+    public Matrix(int r, int c) {
         rows = r;
         cols = c;
         values = new float[r][c];
@@ -81,7 +81,7 @@ public class Matrix {
 
     }
 
-    float calculateDet(){
+    public float calculateDet(){
         Matrix result = new Matrix(this.rows, this.cols);
         for(int i=0;i<this.rows;i++){
             for(int j=0;j<this.cols;j++){

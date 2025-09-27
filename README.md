@@ -27,7 +27,7 @@ A simple **terminal-based matrix calculator** (no GUI) that supports basic matri
 2. Move to main file folder:
 
    ```
-   cd MatrixCalculator\src\matrix
+   cd MatrixCalculator\src
    ```
 3. Compile and run:
 
