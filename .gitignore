@@ -1,5 +1,6 @@
 # Ignore compiled Java classes
 src/matrix/*.class
+src/*.class
 
 # Ignore IDE settings
 .vscode/
