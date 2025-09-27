@@ -92,24 +92,24 @@ public class Matrix {
         // Used Gaussian elimination method
 
         // Convert matrix to triangular matrix
-        for(int i=0;i<this.rows-1;i++){
-            float pivot = this.getValue(i, i);
+        for(int i=0;i<result.rows-1;i++){
+            float pivot = result.getValue(i, i);
 
                 
             for(int j=i+1;j<this.rows;j++){
                 float[] currentRow = new float[this.cols];
-                System.arraycopy(values[i], 0, currentRow, 0, values[i].length);
+                System.arraycopy(result.values[i], 0, currentRow, 0, result.values[i].length);
                 
                 float[] nextRow = new float[this.cols];
-                System.arraycopy(values[j], 0, nextRow, 0, values[j].length);
+                System.arraycopy(result.values[j], 0, nextRow, 0, result.values[j].length);
 
-                float mul = values[j][i]/pivot;
+                float mul = result.values[j][i]/pivot;
 
-                for(int x=0;x<this.cols;x++){
+                for(int x=0;x<result.cols;x++){
                     currentRow[x] = currentRow[x] * mul;
                     nextRow[x] = nextRow[x] - currentRow[x];
 
-                    this.setValue(j, x, nextRow[x]);
+                    result.setValue(j, x, nextRow[x]);
                 }   
 
             }
@@ -118,13 +118,7 @@ public class Matrix {
         // Multiply diagonal values in the triangular matrix to calculate determinent
         float det = 1;
         for(int i=0;i<this.rows;i++){
-            det *= this.getValue(i, i);
-        }
-
-        for(int i=0;i<this.rows;i++){
-            for(int j=0;j<this.cols;j++){
-                this.setValue(i, j, result.getValue(i, j));
-            }
+            det *= result.getValue(i, i);
         }
 
         return det;
